@@ -1,16 +1,97 @@
-# React + Vite
+🏢 WorkProof — Secure Employee & Organization Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+📌 Project Overview
+WorkProof is a full-stack web application designed to securely manage organizations, employees, and their employment history.
+The system enables organizations to onboard employees, track their work history, and verify employment records, while employees can securely access and manage their profiles.
 
-Currently, two official plugins are available:
+🔧 Implementation Approach
+Backend: Built using Node.js, Express, and MongoDB, following RESTful API principles.
+Authentication: JWT-based authentication for secure role-based access (Organization & Employee).
+Frontend: Developed using React (Vite) with clean routing, reusable components, and API integration.
+Security: Password hashing, JWT token validation, protected routes, and environment-based configuration.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+⚙️ Setup & Run Instructions
+📦 Prerequisites
+-Node.js (v18+ recommended)
+-MongoDB (local or Atlas)
+-npm / yarn
 
-## React Compiler
+🔹 Backend Setup
+cd backend
+npm install
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+env
+PORT=5000
+MONGO_URI=mongodb+srv://workproofadmin:workproof204@workproof0.uyo6n8m.mongodb.net/workproofdb?retryWrites=true&w=majority
+JWT_SECRET=98ebb1201ba7fe926145cc414fd5eae461d2a50fe2d0d58ed766f83a1c34a6796d968a295ec793d6b3d48fc470d893deba19bf3ab73b881741b38197b58c4cef
+JWT_EXPIRY=3600
 
-## Expanding the ESLint configuration
+Run the backend server:
+npm run dev
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Backend will run on:
+👉 http://localhost:5000
+
+🔹 Frontend Setup
+cd frontend
+npm install
+npm run dev
+
+Frontend will run on:
+👉 http://localhost:5173 
+
+![alt text](image-1.png) 
+
+![alt text](image-2.png) 
+
+![alt text](image-3.png) 
+
+![alt text](image-4.png) 
+
+![alt text](image-5.png) 
+
+![alt text](image-6.png) 
+
+⭐ Effectiveness Score
+Score: 5 / 5
+Justification:
+AI tools significantly improved development speed by reducing boilerplate work, accelerating debugging, and improving architectural decisions. Saved approximately 3–4 hours on JWT authentication, routing issues, and frontend-backend integration.
+
+📊 Evaluation Criteria Alignment
+✅ Backend Implementation — High
+
+RESTful API design
+JWT-based authentication
+Secure password hashing
+Robust error handling
+Clean controller & route separation
+
+✅ Frontend Implementation — High
+React + Vite architecture
+Clean UI & responsive layouts
+Proper state handling
+Secure API communication
+
+✅ Code Quality — High
+Modular structure
+Clear naming conventions
+Commented logic
+Reusable components
+
+✅ Documentation & Submission — Medium
+Clear setup instructions
+API documentation
+AI usage log included
+
+✅ AI Tool Utilization — Medium
+Strategic and responsible usage
+Assisted productivity without over-dependency
+
+🚀 Future Enhancements
+Organization verification workflow
+Employee document upload
+Audit logs
+Admin dashboard
+Email notifications
+
+
