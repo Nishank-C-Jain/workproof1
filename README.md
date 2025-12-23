@@ -20,11 +20,8 @@ Security: Password hashing, JWT token validation, protected routes, and environm
 cd backend
 npm install
 
-env
-PORT=5000
-MONGO_URI=mongodb+srv://workproofadmin:workproof204@workproof0.uyo6n8m.mongodb.net/workproofdb?retryWrites=true&w=majority
-JWT_SECRET=98ebb1201ba7fe926145cc414fd5eae461d2a50fe2d0d58ed766f83a1c34a6796d968a295ec793d6b3d48fc470d893deba19bf3ab73b881741b38197b58c4cef
-JWT_EXPIRY=3600
+env:
+MongoDB connection string (replace , , and ) MONGO_URI=mongodb+srv://:@/?retryWrites=true&w=majority
 
 Run the backend server:
 npm run dev
@@ -40,17 +37,17 @@ npm run dev
 Frontend will run on:
 👉 http://localhost:5173 
 
-![alt text](image-1.png) 
+![alt text](frontend/img/image-1.png) 
 
-![alt text](image-2.png) 
+![alt text](frontend/img/image-2.png) 
 
-![alt text](image-3.png) 
+![alt text](frontend/img/image-3.png) 
 
-![alt text](image-4.png) 
+![alt text](frontend/img/image-4.png) 
 
-![alt text](image-5.png) 
+![alt text](frontend/img/image-5.png) 
 
-![alt text](image-6.png) 
+![alt text](frontend/img/image-6.png) 
 
 ⭐ Effectiveness Score
 Score: 5 / 5
@@ -86,6 +83,8 @@ AI usage log included
 ✅ AI Tool Utilization — Medium
 Strategic and responsible usage
 Assisted productivity without over-dependency
+
+Project video link : 
 
 🚀 Future Enhancements
 Organization verification workflow
