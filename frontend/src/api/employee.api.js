@@ -1,8 +1,8 @@
 import axiosInstance from "./axiosInstance";
 
 // Get employees under organization
- export const getEmployeesByOrgAPI = () => {
-  return axiosInstance.get("/employees/org");
+export const getEmployeesByOrgAPI = (orgName) => {
+  return axiosInstance.get(`/employees/org/${orgName}`);
 };
 
 // Search employees

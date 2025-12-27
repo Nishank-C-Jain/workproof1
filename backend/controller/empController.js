@@ -11,7 +11,7 @@ export const createEmployee = async (req, res) => {
       aadhaarNumber,
       address,
       password,
-      
+      orgHistory
     } = req.body;
 
     const exists = await Employee.findOne({ aadhaarNumber });
@@ -21,13 +21,17 @@ export const createEmployee = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    // Prefer orgId set by verifyOrg middleware; fallback to req.org if available
+    const orgId = req.orgId || (req.org && req.org.id);
+
     const employee = await Employee.create({
       empName,
       mobileNumber,
       aadhaarNumber,
       address,
       password: hashedPassword,
-    
+      currentOrg: orgId,
+      orgHistory: orgHistory || []
     });
 
     res.status(201).json({
@@ -127,7 +131,7 @@ export const getEmployeesByOrg = async (req, res) => {
   try {
     const employees = await Employee.find({
       currentOrg: req.orgId,
-    });
+    }).populate("currentOrg", "orgName");
 
     res.status(200).json({ employees });
   } catch (error) {

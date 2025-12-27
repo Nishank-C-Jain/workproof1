@@ -39,8 +39,8 @@ const OrgLogin = () => {
       <h2>Organization Login</h2>
 
       <input
-        name="orgName"
-        placeholder="Organization Name"
+        name="orgEmail"
+        placeholder="Organization Email"
         onChange={handleChange}
       />
       <input

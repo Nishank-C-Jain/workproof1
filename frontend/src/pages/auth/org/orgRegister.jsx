@@ -8,6 +8,9 @@ const OrgRegister = () => {
     orgName: "",
     orgType: "",
     description: "",
+    orgEmail: "",
+    orgMobile: "",
+    address: "",
     password: "",
   });
 
@@ -35,6 +38,21 @@ const OrgRegister = () => {
       <input
         name="description"
         placeholder="Description"
+        onChange={handleChange}
+      />
+      <input
+        name="orgEmail"
+        placeholder="Organization Email"
+        onChange={handleChange}
+      />
+      <input
+        name="orgMobile"
+        placeholder="Organization Mobile"
+        onChange={handleChange}
+      />
+      <input
+        name="address"
+        placeholder="Address"
         onChange={handleChange}
       />
       <input

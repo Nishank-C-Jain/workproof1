@@ -9,7 +9,9 @@ const authMiddleware = (req, res, next) => {
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded; // { id, role }
+    // keep decoded token object for downstream checks and provide orgId shortcut
+    req.org = decoded; // { id, role, ... }
+    req.orgId = decoded.id;
 
     next();
   } catch (error) {

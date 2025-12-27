@@ -14,6 +14,17 @@ const organizationSchema = new mongoose.Schema(
     description: {
       type: String
     },
+    orgEmail: {
+      type: String,
+      unique: true,
+    },
+    mobileNumber: {
+      type: String,
+      unique: true
+    },
+    address: {
+      type: String
+    },
     password: {
       type: String,
       required: true

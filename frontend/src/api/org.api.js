@@ -2,12 +2,12 @@ import axiosInstance from "./axiosInstance";
 
 // Get organization by ID
 export const getOrgByIdAPI = (orgId) => {
-  return axiosInstance.get(`/organizations/${orgId}`);
+  return axiosInstance.get(`/organizations/getOrgProfile/${orgId}`);
 };
 
 // Register organization
 export const registerOrg = (data) => {
-  return axiosInstance.post("/organizations/register", data);
+  return axiosInstance.post("/organizations/create", data);
 };
 
 // Organization login

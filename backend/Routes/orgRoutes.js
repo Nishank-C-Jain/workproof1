@@ -6,6 +6,7 @@ import {
 } from "../controller/orgController.js";
 import { verifyOrg } from "../middleware/verifyOrgMiddleware.js";
 import orgAdminOnly from "../middleware/roleMiddleware.js";
+import authMiddleware from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
@@ -13,9 +14,9 @@ const router = express.Router();
 router.post("/create", createOrganization);
 
 // Login organization (JWT generated here)
-router.post("/login", loginOrganization);
+router.post("/login",  loginOrganization);
 
 //get organization profile by id
-router.get("/getOrgProfile/:id", orgAdminOnly, getOrganizationByIdProfile);
+router.get("/getOrgProfile/:id", authMiddleware, orgAdminOnly, getOrganizationByIdProfile);
 
 export default router;

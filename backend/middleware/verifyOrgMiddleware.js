@@ -9,7 +9,9 @@ export const verifyOrg = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.orgId = decoded.id;   // 👈 store orgId
+    // store both decoded token and id for consistency
+    req.org = decoded;
+    req.orgId = decoded.id;
     next();
   } catch (err) {
     return res.status(401).json({ message: "Invalid token" });

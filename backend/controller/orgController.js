@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 //Route 1: Create Organization
 export const createOrganization = async (req, res) => {
   try {
-    const { orgName, orgType, description, password } = req.body;
+      const { orgName, orgType, description, password, orgEmail, orgMobile, address } = req.body;
 
     if (!orgName || !orgType || !password) {
       return res.status(400).json({
@@ -26,7 +26,10 @@ export const createOrganization = async (req, res) => {
       orgName,
       orgType,
       description,
-      password: hashedPassword
+      orgEmail,
+      mobileNumber: orgMobile,
+      password: hashedPassword,
+      address
     });
 
     res.status(201).json({
@@ -42,14 +45,14 @@ export const createOrganization = async (req, res) => {
 //   Route 2: LOGIN ORGANIZATION
 export const loginOrganization = async (req, res) => {
   try {
-    const { orgName, password } = req.body;
+    const { orgEmail, password } = req.body;
 
-    if (!orgName || !password) {
+    if (!orgEmail || !password) {
       return res.status(400).json({
-        message: "orgName and password are required"
+        message: "Email and password are required"
       });
     }
-    const organization = await Organization.findOne({ orgName });
+    const organization = await Organization.findOne({ orgEmail });
     if (!organization) {
       return res.status(404).json({
         message: "Organization not found"
@@ -67,8 +70,9 @@ export const loginOrganization = async (req, res) => {
     const token = jwt.sign(
       {
         id: organization._id,
-        role: "Admin",
-        orgName: organization.orgName
+        role: organization.role,
+        orgMobile: organization.mobileNumber,
+        orgEmail: organization.orgEmail
       },
       process.env.JWT_SECRET,
       {
@@ -78,7 +82,15 @@ export const loginOrganization = async (req, res) => {
 
     res.status(200).json({
       message: "Organization login successful",
-      token
+      token,
+      data:{
+        orgId: organization._id,
+        orgName: organization.orgName,
+        role: "Admin",
+        orgEmail: organization.orgEmail,
+        orgAddress: organization.address,
+        orgMobile: organization.mobileNumber,
+      }
     });
 
   } catch (error) {
@@ -99,9 +111,13 @@ export const getOrganizationByIdProfile = async (req, res) => {
       });
     }
 
+    // Normalize response so frontend can use `email` as before
+    const organizationObj = organization.toObject();
+    organizationObj.email = organizationObj.orgEmail || organizationObj.email;
+
     res.status(200).json({
       message: "Organization fetched successfully",
-      organization
+      organization: organizationObj
     });
 
   } catch (error) {
